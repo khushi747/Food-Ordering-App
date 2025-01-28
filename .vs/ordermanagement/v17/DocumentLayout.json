@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\agoplani\\source\\repos\\ordermanagement\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\agoplani\\source\\repos\\ordermanagement\\models\\menuitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:models\\menuitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Menuitem.cs",
+              "DocumentMoniker": "C:\\Users\\agoplani\\source\\repos\\ordermanagement\\Models\\Menuitem.cs",
+              "RelativeDocumentMoniker": "Models\\Menuitem.cs",
+              "ToolTip": "C:\\Users\\agoplani\\source\\repos\\ordermanagement\\Models\\Menuitem.cs",
+              "RelativeToolTip": "Models\\Menuitem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-28T08:28:21.221Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
