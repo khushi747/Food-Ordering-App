@@ -79,6 +79,53 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ordermanagement.Controllers.ChefController",
+    "Method": "GetAllOrders",
+    "RelativePath": "api/Chef/orders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ordermanagement.Controllers.ChefController",
+    "Method": "GetOrderStatus",
+    "RelativePath": "api/Chef/orders/{orderId}/status",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ordermanagement.Controllers.ChefController",
+    "Method": "UpdateOrderStatus",
+    "RelativePath": "api/Chef/orders/{orderId}/status",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "ordermanagement.Controllers.UpdateOrderStatusDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ordermanagement.Controllers.testController",
     "Method": "Testingsomething",
     "RelativePath": "api/test",

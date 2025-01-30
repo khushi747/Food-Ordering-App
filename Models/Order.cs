@@ -15,6 +15,7 @@ public partial class Order
     public int UserId { get; set; }
     public DateTime OrderDate { get; set; }
     public decimal TotalPrice { get; set; }
+      public User User { get; set; } 
 
     public virtual ICollection<Orderdetail> Orderdetails { get; set; } = new List<Orderdetail>();
     public virtual ICollection<Orderstatus> Orderstatuses { get; set; } = new List<Orderstatus>();
