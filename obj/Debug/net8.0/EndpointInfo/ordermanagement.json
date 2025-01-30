@@ -205,44 +205,6 @@
         }
       }
     },
-    "/api/test": {
-      "get": {
-        "tags": [
-          "test"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/User"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/User"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/User"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/User/createOrder": {
       "post": {
         "tags": [
@@ -379,38 +341,6 @@
         "type": "object",
         "properties": {
           "status": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "User": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "passwordHash": {
-            "type": "string",
-            "format": "byte",
-            "nullable": true
-          },
-          "passwordSalt": {
-            "type": "string",
-            "format": "byte",
-            "nullable": true
-          },
-          "role": {
             "type": "string",
             "nullable": true
           }

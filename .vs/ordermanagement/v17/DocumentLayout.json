@@ -38,8 +38,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 220,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ChefService.cs",
+              "DocumentMoniker": "C:\\Users\\kshukla\\remote-login-config\\Service\\ChefService.cs",
+              "RelativeDocumentMoniker": "Service\\ChefService.cs",
+              "ToolTip": "C:\\Users\\kshukla\\remote-login-config\\Service\\ChefService.cs",
+              "RelativeToolTip": "Service\\ChefService.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAywBkAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-30T10:06:43.358Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
@@ -103,19 +116,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-30T10:07:51.852Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ChefService.cs",
-              "DocumentMoniker": "C:\\Users\\kshukla\\remote-login-config\\Service\\ChefService.cs",
-              "RelativeDocumentMoniker": "Service\\ChefService.cs",
-              "ToolTip": "C:\\Users\\kshukla\\remote-login-config\\Service\\ChefService.cs*",
-              "RelativeToolTip": "Service\\ChefService.cs*",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAswB0AAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T10:06:43.358Z",
               "EditorCaption": ""
             },
             {
