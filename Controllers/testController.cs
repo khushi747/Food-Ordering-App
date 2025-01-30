@@ -7,7 +7,7 @@ namespace ordermanagement.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class testController(OrdermanagementdbContext context) : ControllerBase
+    public class testController(GininternsContext context) : ControllerBase
     {
         [HttpGet]
         public ActionResult<IEnumerable<User>> Testingsomething()

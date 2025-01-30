@@ -16,9 +16,9 @@ namespace ordermanagement.Controllers
 
     public class AdminController : ControllerBase
     {
-        private readonly OrdermanagementdbContext _context;
+        private readonly GininternsContext _context;
 
-        public AdminController(OrdermanagementdbContext context)
+        public AdminController(GininternsContext context)
         {
             _context = context;
         }

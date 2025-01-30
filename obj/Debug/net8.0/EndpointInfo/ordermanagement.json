@@ -264,45 +264,6 @@
         },
         "additionalProperties": false
       },
-      "Order": {
-        "type": "object",
-        "properties": {
-          "orderId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "userId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "orderDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "totalPrice": {
-            "type": "number",
-            "format": "double"
-          },
-          "orderdetails": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Orderdetail"
-            },
-            "nullable": true
-          },
-          "orderstatuses": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Orderstatus"
-            },
-            "nullable": true
-          },
-          "user": {
-            "$ref": "#/components/schemas/User"
-          }
-        },
-        "additionalProperties": false
-      },
       "OrderItemDto": {
         "type": "object",
         "properties": {
@@ -313,53 +274,6 @@
           "quantity": {
             "type": "integer",
             "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "Orderdetail": {
-        "type": "object",
-        "properties": {
-          "orderId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "itemsDetails": {
-            "type": "string",
-            "nullable": true
-          },
-          "totalQuantity": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "totalPrice": {
-            "type": "number",
-            "format": "double"
-          },
-          "orderdetailId": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "Orderstatus": {
-        "type": "object",
-        "properties": {
-          "statusId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "orderId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "status": {
-            "type": "string",
-            "nullable": true
-          },
-          "order": {
-            "$ref": "#/components/schemas/Order"
           }
         },
         "additionalProperties": false
@@ -389,7 +303,7 @@
       "User": {
         "type": "object",
         "properties": {
-          "userId": {
+          "id": {
             "type": "integer",
             "format": "int32"
           },
@@ -401,19 +315,18 @@
             "type": "string",
             "nullable": true
           },
-          "password": {
+          "passwordHash": {
             "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "passwordSalt": {
+            "type": "string",
+            "format": "byte",
             "nullable": true
           },
           "role": {
             "type": "string",
-            "nullable": true
-          },
-          "orders": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Order"
-            },
             "nullable": true
           }
         },

@@ -3,12 +3,20 @@ using Microsoft.EntityFrameworkCore;
 using ordermanagement.Data;
 using ordermanagement.Controllers;
 using ordermanagement.Service;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<UserService>();
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    //.AddJsonOptions(options =>
+    //{
+    //    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+    //    options.JsonSerializerOptions.WriteIndented = true;
+    //})
+    ;
+
 
 
 
@@ -18,7 +26,7 @@ builder.Services.AddSwaggerGen();
 //var provider = builder.Services.BuildServiceProvider();
 //var config = provider.GetService<IConfiguration>();
 var connectionString = builder.Configuration.GetConnectionString("dbcs");
-builder.Services.AddDbContext<OrdermanagementdbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)), ServiceLifetime.Scoped);
+builder.Services.AddDbContext<GininternsContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)), ServiceLifetime.Scoped);
 
 var app = builder.Build();
 

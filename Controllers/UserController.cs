@@ -15,17 +15,17 @@ namespace ordermanagement.Controllers
     public class UserController : ControllerBase
     {
         private readonly UserService _userService;
-        private readonly OrdermanagementdbContext _context;
+        private readonly GininternsContext _context;
 
         // Inject the UserService into the controller
-        public UserController(UserService userService, OrdermanagementdbContext context)
+        public UserController(UserService userService, GininternsContext context)
         {
             _userService = userService;
             _context = context;
         }
 
         [HttpPost("createOrder")]
-        public IActionResult CreateOrder([FromBody] CreateOrderDto dto)
+        public async Task<IActionResult> CreateOrder([FromBody] CreateOrderDto dto)
         {
             if (dto == null || !dto.Items.Any())
             {
@@ -34,17 +34,31 @@ namespace ordermanagement.Controllers
 
             try
             {
-                var order = _userService.CreateOrder(dto);
+                var order = await _userService.CreateOrder(dto); // Ensure the order is created
 
-                _userService.SaveOrder(order);
+                await _userService.SaveOrder(order); // Save order status
 
                 return Ok(order);
             }
             catch (Exception ex)
             {
-                return BadRequest($"Error creating order: {ex.Message}");
+                Console.WriteLine($"Error creating order: {ex.Message}");
+
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine($"Inner Exception: {ex.InnerException.Message}");
+                }
+
+                return BadRequest(new
+                {
+                    error = "Error creating order",
+                    message = ex.Message,
+                    innerException = ex.InnerException?.Message
+                });
             }
+
         }
+
 
         [HttpDelete("Order/{id}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
