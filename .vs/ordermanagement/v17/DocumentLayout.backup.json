@@ -1,34 +1,78 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\kshukla\\remote-login-config\\",
+  "WorkspaceRootPath": "C:\\Users\\agoplani\\remote-login-config\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\kshukla\\remote-login-config\\service\\chefservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:service\\chefservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\agoplani\\remote-login-config\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\kshukla\\remote-login-config\\controllers\\chefcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:controllers\\chefcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\agoplani\\remote-login-config\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\kshukla\\remote-login-config\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\agoplani\\remote-login-config\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\agoplani\\remote-login-config\\data\\gininternscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:data\\gininternscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\agoplani\\remote-login-config\\service\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:service\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\agoplani\\remote-login-config\\dtos\\viewmenudto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:dtos\\viewmenudto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\agoplani\\remote-login-config\\models\\menuitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:models\\menuitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\agoplani\\remote-login-config\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\kshukla\\remote-login-config\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\agoplani\\remote-login-config\\models\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:models\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\agoplani\\remote-login-config\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\agoplani\\remote-login-config\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\kshukla\\remote-login-config\\dtos\\createmenurequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:dtos\\createmenurequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\agoplani\\remote-login-config\\dtos\\user\\createorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:dtos\\user\\createorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\kshukla\\remote-login-config\\dtos\\chef\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:dtos\\chef\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\agoplani\\remote-login-config\\models\\locker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:models\\locker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\kshukla\\remote-login-config\\dtos\\chef\\updateorderstatusdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:dtos\\chef\\updateorderstatusdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\agoplani\\remote-login-config\\dtos\\user\\orderitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:dtos\\user\\orderitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\agoplani\\remote-login-config\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\agoplani\\remote-login-config\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\agoplani\\remote-login-config\\mappers\\menumapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:mappers\\menumapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|c:\\users\\agoplani\\remote-login-config\\dtos\\updatemenurequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC6600B-5D8C-4DC6-A7AD-3BD36F88F116}|ordermanagement.csproj|solutionrelative:dtos\\updatemenurequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,98 +82,224 @@
       "DocumentGroups": [
         {
           "DockedWidth": 220,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ChefService.cs",
-              "DocumentMoniker": "C:\\Users\\kshukla\\remote-login-config\\Service\\ChefService.cs",
-              "RelativeDocumentMoniker": "Service\\ChefService.cs",
-              "ToolTip": "C:\\Users\\kshukla\\remote-login-config\\Service\\ChefService.cs",
-              "RelativeToolTip": "Service\\ChefService.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAywBkAAAA3AAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\agoplani\\remote-login-config\\Service\\UserService.cs",
+              "RelativeDocumentMoniker": "Service\\UserService.cs",
+              "ToolTip": "C:\\Users\\agoplani\\remote-login-config\\Service\\UserService.cs",
+              "RelativeToolTip": "Service\\UserService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T10:06:43.358Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-30T05:01:24.395Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Order.cs",
-              "DocumentMoniker": "C:\\Users\\kshukla\\remote-login-config\\Models\\Order.cs",
-              "RelativeDocumentMoniker": "Models\\Order.cs",
-              "ToolTip": "C:\\Users\\kshukla\\remote-login-config\\Models\\Order.cs",
-              "RelativeToolTip": "Models\\Order.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\agoplani\\remote-login-config\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\agoplani\\remote-login-config\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T10:12:41.854Z",
+              "WhenOpened": "2025-01-30T06:21:01.99Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Menuitem.cs",
+              "DocumentMoniker": "C:\\Users\\agoplani\\remote-login-config\\Models\\Menuitem.cs",
+              "RelativeDocumentMoniker": "Models\\Menuitem.cs",
+              "ToolTip": "C:\\Users\\agoplani\\remote-login-config\\Models\\Menuitem.cs",
+              "RelativeToolTip": "Models\\Menuitem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-30T06:42:52.811Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\agoplani\\remote-login-config\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\agoplani\\remote-login-config\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Controllers\\AdminController.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAcwCUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-30T06:20:40.725Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ViewMenuDto.cs",
+              "DocumentMoniker": "C:\\Users\\agoplani\\remote-login-config\\Dtos\\ViewMenuDto.cs",
+              "RelativeDocumentMoniker": "Dtos\\ViewMenuDto.cs",
+              "ToolTip": "C:\\Users\\agoplani\\remote-login-config\\Dtos\\ViewMenuDto.cs",
+              "RelativeToolTip": "Dtos\\ViewMenuDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-30T04:56:45.74Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\agoplani\\remote-login-config\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\agoplani\\remote-login-config\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-30T05:49:30.371Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "GininternsContext.cs",
+              "DocumentMoniker": "C:\\Users\\agoplani\\remote-login-config\\Data\\GininternsContext.cs",
+              "RelativeDocumentMoniker": "Data\\GininternsContext.cs",
+              "ToolTip": "C:\\Users\\agoplani\\remote-login-config\\Data\\GininternsContext.cs",
+              "RelativeToolTip": "Data\\GininternsContext.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAiwGoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-30T06:10:22.118Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Orderstatus.cs",
+              "DocumentMoniker": "C:\\Users\\agoplani\\remote-login-config\\Models\\Orderstatus.cs",
+              "RelativeDocumentMoniker": "Models\\Orderstatus.cs",
+              "ToolTip": "C:\\Users\\agoplani\\remote-login-config\\Models\\Orderstatus.cs",
+              "RelativeToolTip": "Models\\Orderstatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-30T05:02:51.359Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Orderdetail.cs",
+              "DocumentMoniker": "C:\\Users\\agoplani\\remote-login-config\\Models\\Orderdetail.cs",
+              "RelativeDocumentMoniker": "Models\\Orderdetail.cs",
+              "ToolTip": "C:\\Users\\agoplani\\remote-login-config\\Models\\Orderdetail.cs",
+              "RelativeToolTip": "Models\\Orderdetail.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-30T05:02:52.953Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\agoplani\\remote-login-config\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "Models\\Order.cs",
+              "ToolTip": "C:\\Users\\agoplani\\remote-login-config\\Models\\Order.cs",
+              "RelativeToolTip": "Models\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-30T05:09:12.314Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\agoplani\\remote-login-config\\.gitignore",
+              "RelativeDocumentMoniker": ".gitignore",
+              "ToolTip": "C:\\Users\\agoplani\\remote-login-config\\.gitignore",
+              "RelativeToolTip": ".gitignore",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAcwDIAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-01-30T05:46:38.814Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\agoplani\\remote-login-config\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\agoplani\\remote-login-config\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-01-30T06:09:04.752Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Locker.cs",
+              "DocumentMoniker": "C:\\Users\\agoplani\\remote-login-config\\Models\\Locker.cs",
+              "RelativeDocumentMoniker": "Models\\Locker.cs",
+              "ToolTip": "C:\\Users\\agoplani\\remote-login-config\\Models\\Locker.cs",
+              "RelativeToolTip": "Models\\Locker.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-30T06:42:51.856Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CreateOrderDto.cs",
+              "DocumentMoniker": "C:\\Users\\agoplani\\remote-login-config\\Dtos\\User\\CreateOrderDto.cs",
+              "RelativeDocumentMoniker": "Dtos\\User\\CreateOrderDto.cs",
+              "ToolTip": "C:\\Users\\agoplani\\remote-login-config\\Dtos\\User\\CreateOrderDto.cs",
+              "RelativeToolTip": "Dtos\\User\\CreateOrderDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-30T04:57:10.866Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\kshukla\\remote-login-config\\Models\\User.cs",
+              "DocumentMoniker": "C:\\Users\\agoplani\\remote-login-config\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
-              "ToolTip": "C:\\Users\\kshukla\\remote-login-config\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\agoplani\\remote-login-config\\Models\\User.cs",
               "RelativeToolTip": "Models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T10:08:59.219Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-30T04:56:05.962Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CreateMenuRequestDto.cs",
-              "DocumentMoniker": "C:\\Users\\kshukla\\remote-login-config\\Dtos\\CreateMenuRequestDto.cs",
-              "RelativeDocumentMoniker": "Dtos\\CreateMenuRequestDto.cs",
-              "ToolTip": "C:\\Users\\kshukla\\remote-login-config\\Dtos\\CreateMenuRequestDto.cs",
-              "RelativeToolTip": "Dtos\\CreateMenuRequestDto.cs",
+              "DocumentIndex": 13,
+              "Title": "OrderItemDto.cs",
+              "DocumentMoniker": "C:\\Users\\agoplani\\remote-login-config\\Dtos\\User\\OrderItemDto.cs",
+              "RelativeDocumentMoniker": "Dtos\\User\\OrderItemDto.cs",
+              "ToolTip": "C:\\Users\\agoplani\\remote-login-config\\Dtos\\User\\OrderItemDto.cs",
+              "RelativeToolTip": "Dtos\\User\\OrderItemDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T10:08:48.38Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-30T04:57:12.748Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UpdateOrderStatusDto.cs",
-              "DocumentMoniker": "C:\\Users\\kshukla\\remote-login-config\\Dtos\\Chef\\UpdateOrderStatusDto.cs",
-              "RelativeDocumentMoniker": "Dtos\\Chef\\UpdateOrderStatusDto.cs",
-              "ToolTip": "C:\\Users\\kshukla\\remote-login-config\\Dtos\\Chef\\UpdateOrderStatusDto.cs",
-              "RelativeToolTip": "Dtos\\Chef\\UpdateOrderStatusDto.cs",
+              "DocumentIndex": 16,
+              "Title": "MenuMapper.cs",
+              "DocumentMoniker": "C:\\Users\\agoplani\\remote-login-config\\Mappers\\MenuMapper.cs",
+              "RelativeDocumentMoniker": "Mappers\\MenuMapper.cs",
+              "ToolTip": "C:\\Users\\agoplani\\remote-login-config\\Mappers\\MenuMapper.cs",
+              "RelativeToolTip": "Mappers\\MenuMapper.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T10:08:45.86Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-30T04:57:00.863Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "OrderDto.cs",
-              "DocumentMoniker": "C:\\Users\\kshukla\\remote-login-config\\Dtos\\Chef\\OrderDto.cs",
-              "RelativeDocumentMoniker": "Dtos\\Chef\\OrderDto.cs",
-              "ToolTip": "C:\\Users\\kshukla\\remote-login-config\\Dtos\\Chef\\OrderDto.cs",
-              "RelativeToolTip": "Dtos\\Chef\\OrderDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAeAAAAAAAAAA==",
+              "DocumentIndex": 17,
+              "Title": "UpdateMenuRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\agoplani\\remote-login-config\\Dtos\\UpdateMenuRequestDto.cs",
+              "RelativeDocumentMoniker": "Dtos\\UpdateMenuRequestDto.cs",
+              "ToolTip": "C:\\Users\\agoplani\\remote-login-config\\Dtos\\UpdateMenuRequestDto.cs",
+              "RelativeToolTip": "Dtos\\UpdateMenuRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T10:07:51.852Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ChefController.cs",
-              "DocumentMoniker": "C:\\Users\\kshukla\\remote-login-config\\Controllers\\ChefController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ChefController.cs",
-              "ToolTip": "C:\\Users\\kshukla\\remote-login-config\\Controllers\\ChefController.cs",
-              "RelativeToolTip": "Controllers\\ChefController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAA7wB4AAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T10:05:55.438Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-30T04:56:43.414Z"
             }
           ]
         }
