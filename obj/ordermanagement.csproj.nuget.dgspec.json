@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\agoplani\\source\\repos\\ordermanagement\\ordermanagement.csproj": {}
+    "C:\\Users\\agoplani\\remote-login-config\\ordermanagement.csproj": {}
   },
   "projects": {
-    "C:\\Users\\agoplani\\source\\repos\\ordermanagement\\ordermanagement.csproj": {
+    "C:\\Users\\agoplani\\remote-login-config\\ordermanagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\agoplani\\source\\repos\\ordermanagement\\ordermanagement.csproj",
+        "projectUniqueName": "C:\\Users\\agoplani\\remote-login-config\\ordermanagement.csproj",
         "projectName": "ordermanagement",
-        "projectPath": "C:\\Users\\agoplani\\source\\repos\\ordermanagement\\ordermanagement.csproj",
+        "projectPath": "C:\\Users\\agoplani\\remote-login-config\\ordermanagement.csproj",
         "packagesPath": "C:\\Users\\agoplani\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\agoplani\\source\\repos\\ordermanagement\\obj\\",
+        "outputPath": "C:\\Users\\agoplani\\remote-login-config\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

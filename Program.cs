@@ -2,11 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using ordermanagement.Data;
 using ordermanagement.Controllers;
+using ordermanagement.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddScoped<UserService>();
 builder.Services.AddControllers();
 
 
@@ -17,7 +18,7 @@ builder.Services.AddSwaggerGen();
 //var provider = builder.Services.BuildServiceProvider();
 //var config = provider.GetService<IConfiguration>();
 var connectionString = builder.Configuration.GetConnectionString("dbcs");
-builder.Services.AddDbContext<OrdermanagementdbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+builder.Services.AddDbContext<OrdermanagementdbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)), ServiceLifetime.Scoped);
 
 var app = builder.Build();
 
@@ -34,6 +35,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapMenuitemEndpoints();
+//app.MapMenuitemEndpoints();
 
 app.Run();

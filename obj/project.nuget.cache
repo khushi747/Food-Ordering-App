@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Rz+lQqgYzRs=",
+  "dgSpecHash": "o7+Lw2y31MQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\agoplani\\source\\repos\\ordermanagement\\ordermanagement.csproj",
+  "projectFilePath": "C:\\Users\\agoplani\\remote-login-config\\ordermanagement.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\agoplani\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\agoplani\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
