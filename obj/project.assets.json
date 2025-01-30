@@ -8028,23 +8028,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kshukla\\.nuget\\packages\\": {},
+    "C:\\Users\\agoplani\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kshukla\\remote-login-config\\ordermanagement.csproj",
+      "projectUniqueName": "C:\\Users\\agoplani\\remote-login-config\\ordermanagement.csproj",
       "projectName": "ordermanagement",
-      "projectPath": "C:\\Users\\kshukla\\remote-login-config\\ordermanagement.csproj",
-      "packagesPath": "C:\\Users\\kshukla\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kshukla\\remote-login-config\\obj\\",
+      "projectPath": "C:\\Users\\agoplani\\remote-login-config\\ordermanagement.csproj",
+      "packagesPath": "C:\\Users\\agoplani\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\agoplani\\remote-login-config\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\kshukla\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\agoplani\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
