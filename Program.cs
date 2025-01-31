@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<ChefService>();
 builder.Services.AddControllers()
     //.AddJsonOptions(options =>
     //{

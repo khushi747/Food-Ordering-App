@@ -3,11 +3,10 @@ using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ordermanagement.Data;
-using ordermanagement.Dtos;
+using ordermanagement.Dtos.Admin;
 using ordermanagement.Mappers;
 using ordermanagement.Models;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ordermanagement.Controllers
 {

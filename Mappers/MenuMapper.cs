@@ -1,4 +1,4 @@
-﻿using ordermanagement.Dtos;
+﻿using ordermanagement.Dtos.Admin;
 using ordermanagement.Models;
 
 namespace ordermanagement.Mappers

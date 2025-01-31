@@ -1,9 +1,7 @@
-﻿namespace ordermanagement.Dtos
+﻿namespace ordermanagement.Dtos.Admin
 {
-    public class ViewMenuDto
+    public class CreateMenuRequestDto
     {
-        //public int ItemId { get; set; }
-
         public string Name { get; set; } = null!;
 
         public decimal Price { get; set; }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ordermanagement.Models;
+namespace ordermanagement.Migrations;
 
 public partial class Efmigrationshistory
 {

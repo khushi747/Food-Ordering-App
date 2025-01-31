@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ordermanagement.Models;
-using Newtonsoft.Json;
 using ordermanagement.Dtos.User;
-using ordermanagement.Mappers;
-using ordermanagement.Data;
 using ordermanagement.Service;
+using ordermanagement.Data;
 using Microsoft.EntityFrameworkCore;
-using Humanizer;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ordermanagement.Controllers
 {
@@ -15,13 +15,10 @@ namespace ordermanagement.Controllers
     public class UserController : ControllerBase
     {
         private readonly UserService _userService;
-        private readonly GininternsContext _context;
 
-        // Inject the UserService into the controller
-        public UserController(UserService userService, GininternsContext context)
+        public UserController(UserService userService)
         {
             _userService = userService;
-            _context = context;
         }
 
         [HttpPost("createOrder")]
@@ -34,58 +31,21 @@ namespace ordermanagement.Controllers
 
             try
             {
-                var order = await _userService.CreateOrder(dto); // Ensure the order is created
-
-                await _userService.SaveOrder(order); // Save order status
-
+                var order = await _userService.CreateOrder(dto);
                 return Ok(order);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine($"Error creating order: {ex.Message}");
 
-                if (ex.InnerException != null)
-                {
-                    Console.WriteLine($"Inner Exception: {ex.InnerException.Message}");
-                }
-
-                return BadRequest(new
-                {
-                    error = "Error creating order",
-                    message = ex.Message,
-                    innerException = ex.InnerException?.Message
-                });
+                return BadRequest();
             }
-
         }
 
-
-        [HttpDelete("Order/{id}")]
-        public async Task<IActionResult> Delete([FromRoute] int id)
+        [HttpDelete("order/{id}")]
+        public async Task<IActionResult> DeleteOrder([FromRoute] int id)
         {
-            var deleteorder = await _context.Orders.FirstOrDefaultAsync(x => x.OrderId == id);
-            if (deleteorder == null)
-            {
-                return NotFound();
-            }
-            _context.Orders.Remove(deleteorder);
-            
-
-            var orderStatus = new Orderstatus
-            {
-                OrderId = id,
-                Status = "Cancelled",
-                //StatusDate = DateTime.Now
-            };
-
-            _context.Orderstatuses.Add(orderStatus);
-            await _context.SaveChangesAsync();
-            return Ok("order deleted");
-
-        }
-
-          
-
+            var result = await _userService.DeleteOrder(id);
+            return Ok(result);
         }
     }
-
+}

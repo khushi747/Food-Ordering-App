@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using ordermanagement.Migrations;
 using ordermanagement.Models;
 using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
 
@@ -19,7 +20,7 @@ public partial class GininternsContext : DbContext
 
     public virtual DbSet<Efmigrationshistory> Efmigrationshistories { get; set; }
 
-    public virtual DbSet<Locker> Lockers { get; set; }
+    //public virtual DbSet<Locker> Lockers { get; set; }
 
     public virtual DbSet<Menuitem> Menuitems { get; set; }
 
@@ -31,9 +32,9 @@ public partial class GininternsContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server=gin-web-004;database=gininterns;user=jpatel;password=Janmesh@1234", ServerVersion.Parse("9.0.0-mysql"));
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+//        => optionsBuilder.UseMySql("server=gin-web-004;database=gininterns;user=jpatel;password=Janmesh@1234", ServerVersion.Parse("9.0.0-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -51,14 +52,14 @@ public partial class GininternsContext : DbContext
             entity.Property(e => e.ProductVersion).HasMaxLength(32);
         });
 
-        modelBuilder.Entity<Locker>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PRIMARY");
+        //modelBuilder.Entity<Locker>(entity =>
+        //{
+        //    entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("lockers");
+        //    entity.ToTable("lockers");
 
-            entity.HasIndex(e => e.UserId, "IX_Lockers_UserId");
-        });
+        //    entity.HasIndex(e => e.UserId, "IX_Lockers_UserId");
+        //});
 
         modelBuilder.Entity<Menuitem>(entity =>
         {
@@ -107,7 +108,7 @@ public partial class GininternsContext : DbContext
 
             entity.HasIndex(e => e.OrderId, "OrderId");
 
-            entity.Property(e => e.Status).HasColumnType("enum('Pending','In Progress','Completed')");
+            entity.Property(e => e.Status).HasColumnType("enum('Pending','In Progress','Completed','Cancelled' )");
 
             entity.HasOne(d => d.Order).WithMany(p => p.Orderstatuses)
                 .HasForeignKey(d => d.OrderId)

@@ -3,12 +3,19 @@ using ordermanagement.Data;
 using ordermanagement.Dtos.User;
 using ordermanagement.Mappers;
 using ordermanagement.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 
 namespace ordermanagement.Service
 {
-    public class UserService(GininternsContext context)
+    public class UserService
     {
-        private readonly GininternsContext _context = context;
+        private readonly GininternsContext _context;
+
+        public UserService(GininternsContext context)
+        {
+            _context = context;
+        }
 
         public decimal GetMenuItemPrice(int itemId)
         {
@@ -16,84 +23,115 @@ namespace ordermanagement.Service
 
             if (menuItem == null)
             {
-                throw new KeyNotFoundException($"{itemId} not found. Please check the menuId properly");
+                throw new KeyNotFoundException($"Item ID {itemId} not found. Please check the menu properly.");
             }
 
             return menuItem.Price;
         }
-        public async Task<Order> CreateOrder(CreateOrderDto createOrderDto)
+
+        public async Task<object> CreateOrder(CreateOrderDto createOrderDto)
         {
-                decimal TotalPrice = createOrderDto.Items.Sum(i => i.Quantity * GetMenuItemPrice(i.ItemId));
+            decimal totalPrice = 0;
+            List<Menuitem> itemsToUpdate = new();
 
-                var order = new Order
+            foreach (var item in createOrderDto.Items)
+            {
+                var menuItem = await _context.Menuitems.FirstOrDefaultAsync(m => m.ItemId == item.ItemId);
+
+                if (menuItem == null)
                 {
-                    UserId = createOrderDto.UserId,
-                    OrderDate = DateTime.Now,
-                    TotalPrice = TotalPrice
-                };
+                    return new { success = false, message = $"Item ID {item.ItemId} not found." };
+                }
 
-                // Save Order first to generate OrderId
-                _context.Orders.Add(order);
-                await _context.SaveChangesAsync(); // Ensure order ID is generated!
-
-                // Add Order Details
-                var orderDetails = createOrderDto.Items.Select(item => new Orderdetail
+                if (menuItem.Quantity < item.Quantity)
                 {
-                    OrderId = order.OrderId, // Now OrderId is available!
-                    TotalQuantity = item.Quantity,
-                    TotalPrice = GetMenuItemPrice(item.ItemId) * item.Quantity,
-                    ItemsDetails = JsonConvert.SerializeObject(item)
-                }).ToList();
+                    return new { success = false, message = $"Item ID {item.ItemId} does not have enough stock" };
+                }
 
-                _context.Orderdetails.AddRange(orderDetails);
-
-                // Add Order Status
-                var orderStatus = new Orderstatus
-                {
-                    OrderId = order.OrderId, // OrderId is correctly assigned
-                    Status = "Pending"
-                };
-
-                _context.Orderstatuses.Add(orderStatus);
-
-                // Save Order Details and Status
-                await _context.SaveChangesAsync();
-
-                return order;
+                totalPrice += item.Quantity * menuItem.Price;
+                menuItem.Quantity -= item.Quantity; 
+                itemsToUpdate.Add(menuItem);
             }
 
-        public async Task SaveOrder(Order order)
-        {
+            var order = new Order
+            {
+                UserId = createOrderDto.UserId,
+                OrderDate = DateTime.UtcNow,
+                TotalPrice = totalPrice
+            };
+
+            _context.Orders.Add(order);
+            await _context.SaveChangesAsync();
+
+            var orderDetails = createOrderDto.Items.Select(item => new Orderdetail
+            {
+                OrderId = order.OrderId,
+                TotalQuantity = item.Quantity,
+                TotalPrice = GetMenuItemPrice(item.ItemId) * item.Quantity,
+                ItemsDetails = JsonConvert.SerializeObject(item)
+            }).ToList();
+
+            _context.Orderdetails.AddRange(orderDetails);
+
             var orderStatus = new Orderstatus
             {
                 OrderId = order.OrderId,
                 Status = "Pending"
             };
-            await _context.Orders.AddAsync(order);
-            await _context.Orderstatuses.AddAsync(orderStatus);
+
+            _context.Orderstatuses.Add(orderStatus);
+            _context.Menuitems.UpdateRange(itemsToUpdate);
+
             await _context.SaveChangesAsync();
+
+            return new { success = true, message = "Order placed", order = order.MapToOrderDto() };
         }
 
 
-        //public bool CancelOrder(CancelOrderDto dto)
-        //{
-        //    var order = _context.Orders.Find(dto.OrderId);
-        //    if (order == null)
-        //    {
-        //        return false;
-        //    }
+        public async Task<object> DeleteOrder(int orderId)
+        {
+            var order = await _context.Orders.Include(o => o.Orderdetails).FirstOrDefaultAsync(o => o.OrderId == orderId);
 
-        //var orderStatus = new Orderstatus
-        //{
-        //    OrderId = dto.OrderId,
-        //    Status = "Cancelled",
-        //    //StatusDate = DateTime.Now
-        //};
+            if (order == null)
+            {
+                return new { success = false, message = "Order does not exist" };
+            }
 
-        //_context.Orderstatuses.Add(orderStatus);
-        //    _context.SaveChanges();
-        //    return true;
-        //}
+
+
+            foreach (var orderDetail in order.Orderdetails)
+            {
+                var itemDetails = JsonConvert.DeserializeObject<OrderItemDto>(orderDetail.ItemsDetails);
+
+                if (itemDetails != null)
+                {
+                    var menuItem = await _context.Menuitems.FirstOrDefaultAsync(m => m.ItemId == itemDetails.ItemId);
+
+                    if (menuItem != null)
+                    {
+
+                        menuItem.Quantity += itemDetails.Quantity; 
+                        _context.Menuitems.Update(menuItem);
+                    }
+                }
+            }
+            _context.Orders.Remove(order);
+
+
+
+            var orderStatus = new Orderstatus
+            {
+                OrderId = orderId,
+                Status = "Cancelled"
+            };
+
+            _context.Orderstatuses.Add(orderStatus);
+            await _context.SaveChangesAsync();
+
+            return new { success = true, message = "your order is cancelled" };
+        }
+
+
+
     }
 }
-

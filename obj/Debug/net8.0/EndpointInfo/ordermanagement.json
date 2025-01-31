@@ -142,7 +142,30 @@
         }
       }
     },
-    "/api/Chef/orders/{orderId}/status": {
+    "/api/Chef/orders/{orderId}/items": {
+      "get": {
+        "tags": [
+          "Chef"
+        ],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Chef/orders/status/{orderId}": {
       "get": {
         "tags": [
           "Chef"
@@ -236,7 +259,7 @@
         }
       }
     },
-    "/api/User/Order/{id}": {
+    "/api/User/order/{id}": {
       "delete": {
         "tags": [
           "User"

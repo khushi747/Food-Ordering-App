@@ -19,7 +19,7 @@
     "Parameters": [
       {
         "Name": "createMenuRequestDto",
-        "Type": "ordermanagement.Dtos.CreateMenuRequestDto",
+        "Type": "ordermanagement.Dtos.Admin.CreateMenuRequestDto",
         "IsRequired": true
       }
     ],
@@ -56,7 +56,7 @@
       },
       {
         "Name": "updateDto",
-        "Type": "ordermanagement.Dtos.UpdateMenuRequestDto",
+        "Type": "ordermanagement.Dtos.Admin.UpdateMenuRequestDto",
         "IsRequired": true
       }
     ],
@@ -90,8 +90,24 @@
   },
   {
     "ContainingType": "ordermanagement.Controllers.ChefController",
+    "Method": "GetOrderItems",
+    "RelativePath": "api/Chef/orders/{orderId}/items",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ordermanagement.Controllers.ChefController",
     "Method": "GetOrderStatus",
-    "RelativePath": "api/Chef/orders/{orderId}/status",
+    "RelativePath": "api/Chef/orders/status/{orderId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -107,7 +123,7 @@
   {
     "ContainingType": "ordermanagement.Controllers.ChefController",
     "Method": "UpdateOrderStatus",
-    "RelativePath": "api/Chef/orders/{orderId}/status",
+    "RelativePath": "api/Chef/orders/status/{orderId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -119,7 +135,7 @@
       },
       {
         "Name": "dto",
-        "Type": "ordermanagement.Controllers.UpdateOrderStatusDto",
+        "Type": "ordermanagement.Dtos.Chef.UpdateOrderStatusDto",
         "IsRequired": true
       }
     ],
@@ -143,8 +159,8 @@
   },
   {
     "ContainingType": "ordermanagement.Controllers.UserController",
-    "Method": "Delete",
-    "RelativePath": "api/User/Order/{id}",
+    "Method": "DeleteOrder",
+    "RelativePath": "api/User/order/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,

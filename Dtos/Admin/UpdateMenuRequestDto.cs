@@ -1,6 +1,6 @@
-﻿namespace ordermanagement.Dtos
+﻿namespace ordermanagement.Dtos.Admin
 {
-    public class CreateMenuRequestDto
+    public class UpdateMenuRequestDto
     {
         public string Name { get; set; } = null!;
 

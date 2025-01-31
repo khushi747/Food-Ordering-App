@@ -2,6 +2,9 @@
 using ordermanagement.Data;
 using ordermanagement.Dtos.Chef;
 using ordermanagement.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ordermanagement.Service
 {
@@ -13,29 +16,43 @@ namespace ordermanagement.Service
         {
             _context = context;
         }
-
-        public async Task<List<OrderDto>> GetAllOrdersAsync()
+        public async Task<List<OrderDto>> GetAllOrders()
         {
             return await _context.Orders
-                .Select(order => new OrderDto
+                .Include(o => o.Orderstatuses)
+                .Include(o => o.User)
+                .Select(o => new OrderDto
                 {
-                    OrderId = order.OrderId,
-                    UserName = order.User.Name,
-                    OrderDate = order.OrderDate,
-                    TotalPrice = order.TotalPrice,
-                    OrderStatuses = order.Orderstatuses
-                        .Select(status => new OrderStatusDto
-                        {
-                            StatusId = status.StatusId,
-                            Status = status.Status,
-                            //StatusDate = status.StatusDate
-                        })
-                        .ToList()
+                    OrderId = o.OrderId,
+                    UserName = o.User.Name, 
+                    OrderDate = o.OrderDate,
+                    TotalPrice = o.TotalPrice,
+                    OrderStatuses = o.Orderstatuses.Select(s => new OrderStatusDto
+                    {
+                        StatusId = s.StatusId,
+                        Status = s.Status
+                    }).ToList()
                 })
                 .ToListAsync();
         }
 
-        public async Task<OrderStatusDto?> GetOrderStatusAsync(int orderId)
+        public async Task<List<ViewOrderitemsDto>> GetOrderItems(int orderId)
+        {
+            var order = await _context.Orders
+                .Include(o => o.Orderdetails)
+                .FirstOrDefaultAsync(o => o.OrderId == orderId);
+
+            if (order == null) return null;
+
+            return order.Orderdetails.Select(d => new ViewOrderitemsDto
+            {
+                OrderId = d.OrderId,
+                ItemsDetails = d.ItemsDetails,
+                TotalQuantity = d.TotalQuantity
+            }).ToList();
+        }
+
+        public async Task<OrderStatusDto> GetOrderStatus(int orderId)
         {
             var status = await _context.Orderstatuses
                 .Where(s => s.OrderId == orderId)
@@ -47,28 +64,21 @@ namespace ordermanagement.Service
             return new OrderStatusDto
             {
                 StatusId = status.StatusId,
-                Status = status.Status,
-                //StatusDate = status.StatusDate
+                Status = status.Status
             };
         }
 
-        public async Task<bool> UpdateOrderStatusAsync(int orderId, UpdateOrderStatusDto dto)
+        public async Task<bool> UpdateOrderStatus(int orderId, string newStatus)
         {
-            var order = await _context.Orders.FindAsync(orderId);
-            if (order == null) return false;
-
-            var newStatus = new Orderstatus
+            var orderStatus = new Orderstatus
             {
                 OrderId = orderId,
-                Status = dto.Status,
-                // Uncomment if StatusDate is required
-                // StatusDate = DateTime.UtcNow
+                Status = newStatus
             };
 
-            _context.Orderstatuses.Add(newStatus);
-            await _context.SaveChangesAsync();
-            return true;
+            _context.Orderstatuses.Add(orderStatus);
+            var result = await _context.SaveChangesAsync();
+            return result > 0;
         }
     }
-
 }
