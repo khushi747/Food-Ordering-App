@@ -1,0 +1,39 @@
+<!-- <p-toast [breakpoints]="{ '920px': { width: '100%', right: '0', left: '0' } }" /> -->
+<p-card styleClass="item-card" [style]="{ width: '20rem',overflow: 'hidden', height:'25rem' , position:'relative' }">
+  
+
+  <div class="image-container h-5">
+    <img [src]="product.image" [alt]="product.name">
+  </div>
+
+
+  <div class="card-content" style="display: flex; flex-direction: column; justify-content: space-between; min-height: fit-content; padding-bottom: 1rem; height: 4rem;">
+    <div class="detail-item">
+    <h3 class="product-title">{{ product.name }}</h3>
+    <p class="value"> &#8377; {{ product.price }}</p>
+  </div>
+    
+
+    <div class="action-buttons" style=" position: absolute;left: 50%; transform: translate(-50%, -50%); margin: 0 auto; bottom: 0;" >
+      
+      <!-- <p-button 
+        label="Add To Cart" 
+        icon="pi pi-cart-plus" 
+        styleClass="p-button-outlined"
+        (click)="addToCart()"> 
+        {{ quantity > 0 ? quantity : 'Add To Cart' }}
+
+      </p-button> -->
+
+      <p-button *ngIf="quantity === 0" icon="pi pi-cart-plus" styleClass="p-button-outlined" (click)="addToCart()" label="Add To Cart"></p-button>
+
+      <div *ngIf="quantity > 0" style="display: flex; border: 1px solid black; border-radius: 10px; align-items: center; gap: 10px; padding-left: .7rem; padding-right: .7rem;">
+        <i class="pi pi-minus" style="cursor: pointer;" (click)="updateQuantity(-1)"></i>
+        <p>{{ quantity }}</p>
+        <i class="pi pi-plus" style="cursor: pointer;" (click)="updateQuantity(1)"></i>
+      </div>
+
+    </div>
+  </div>
+</p-card>
+

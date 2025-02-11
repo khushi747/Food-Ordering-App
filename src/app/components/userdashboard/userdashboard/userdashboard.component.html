@@ -1,0 +1,9 @@
+<app-navbar></app-navbar>
+<div class="flex flex-wrap gap-4 p-4 justify-content-center align-items-center ">
+  <app-item-card 
+    *ngFor="let product of products"
+    [product]="product"
+    (delete)="handleDelete($event)">
+    <!--(update)="handleUpdate($event)" -->
+  </app-item-card>
+</div>

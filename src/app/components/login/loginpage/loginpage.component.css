@@ -1,0 +1,70 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.logo img{
+    width: 5rem;  
+    height: 5rem;
+    border-radius: 50%;  
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+}
+.message {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 1rem;
+  }
+.message a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.login-container {
+    margin-top: 10rem;
+    position: absolute; 
+    left: 0; 
+    right: 0; 
+    margin-inline: auto; 
+    width: fit-content;
+     justify-content: space-between;
+    align-items: center;
+    background: white;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 25rem;
+    text-align: center;
+}
+.login-container h2 {
+    margin-bottom: 20px;
+}
+.login-container input, .login-container select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing:border-box;
+    font-size: medium;
+    font-weight: 300;
+    font-family: "Roboto", sans-serif !important;
+}
+button {
+    font-family: "Roboto", sans-serif !important;
+    font-weight: 300;
+    font-size: large;
+    width: 100%;
+    margin: 8px 2px;
+    padding: 10px;
+    background: #00b35a;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing:border-box;
+
+    
+}
+.login-container button:hover {
+    background: #075830;
+    color: white;
+}
