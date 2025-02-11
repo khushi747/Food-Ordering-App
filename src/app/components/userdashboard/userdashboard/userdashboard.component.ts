@@ -1,7 +1,4 @@
-
-
 import { Component, inject, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../../services/api.service';
@@ -11,7 +8,7 @@ import { ItemCardComponent } from '../item-card/item-card.component';
 @Component({
   selector: 'app-root',
   standalone : true,
-  imports: [RouterOutlet,NavbarComponent, ItemCardComponent,CommonModule],
+  imports: [NavbarComponent, ItemCardComponent,CommonModule],
   templateUrl: './userdashboard.component.html',
   styleUrl: './userdashboard.component.css'
 })

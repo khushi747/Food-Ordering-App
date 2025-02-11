@@ -61,12 +61,12 @@ export class LoginpageComponent {
               this.router.navigate(['/admin']);
               break;
             case 'chef':
-                console.log('Navigating to /chef');
-                this.router.navigate(['/chef']);
+                console.log('Navigating to /kitchen');
+                this.router.navigate(['/kitchen']);
                 break;
             default:
-              console.log('Navigating to /user');
-              this.router.navigate(['/user']);             
+              console.log('Navigating to /users');
+              this.router.navigate(['/users']);             
           }
           
         }

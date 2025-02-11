@@ -1,6 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
  import { error } from 'console';
  import { response } from 'express';
@@ -13,7 +12,7 @@ import { AddComponent } from '../add/add.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, NavbarComponent, ItemCardComponent, AddComponent],
+  imports: [CommonModule, NavbarComponent, ItemCardComponent, AddComponent],
   templateUrl: './admindashboard.component.html',
   styleUrls: ['./admindashboard.component.css']
 })
