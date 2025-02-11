@@ -8,11 +8,12 @@ import {jwtDecode} from 'jwt-decode';
 import { JwtPayload } from 'jwt-decode';
 import {  HostListener } from '@angular/core';
 import { LoginService } from '../../../services/login.service';
+import { UserService } from '../../../services/shared/user.service';  
 
 interface CustomJwtPayload extends JwtPayload {
   role: string;
+  user_Id: string; // Add this to match your token structure
 }
- 
 function decodeToken(token: string): CustomJwtPayload {
   return jwtDecode<CustomJwtPayload>(token);
 }
@@ -23,6 +24,8 @@ function decodeToken(token: string): CustomJwtPayload {
   templateUrl: './loginpage.component.html',
   styleUrls: ['./loginpage.component.css']
 })
+
+
 
 // Object to hold login form data
 export class LoginpageComponent {
@@ -37,7 +40,9 @@ export class LoginpageComponent {
     this.onSubmitLoginData();
   }
   // Injecting LoginService and Router so that we can use them in this component
-  constructor( private loginService: LoginService,private router : Router) { }
+  constructor( private loginService: LoginService,private router : Router,private userService: UserService) { }
+
+ 
 
   // Function called when login button is clicked
   onSubmitLoginData(){    
@@ -50,6 +55,12 @@ export class LoginpageComponent {
         const decoded = decodeToken(token);
         console.log('details are',decoded);
         console.log('Role is', decoded.role);
+        if (decoded && decoded.user_Id) {
+          const userId = parseInt(decoded.user_Id, 10); // Now it recognizes 'user_Id'
+          this.userService.setUserId(userId);
+        }
+        
+        
         const role=decoded.role;
         if(response && response.token){
           // Save token and role to local storage
@@ -61,12 +72,12 @@ export class LoginpageComponent {
               this.router.navigate(['/admin']);
               break;
             case 'chef':
-                console.log('Navigating to /kitchen');
+                console.log('Navigating to /chef');
                 this.router.navigate(['/kitchen']);
                 break;
             default:
-              console.log('Navigating to /users');
-              this.router.navigate(['/users']);             
+              console.log('Navigating to /user');
+              this.router.navigate(['/user']);             
           }
           
         }

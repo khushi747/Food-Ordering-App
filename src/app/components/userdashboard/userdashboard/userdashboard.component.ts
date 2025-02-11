@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { ApiService } from '../../../services/api.service';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ItemCardComponent } from '../item-card/item-card.component';
-
 @Component({
   selector: 'app-root',
   standalone : true,
@@ -27,7 +26,6 @@ export class UserdashboardComponent implements OnInit{
 
   http = inject(HttpClient);
   title = 'Users';
-
 
 
   handleDelete(product: any) {

@@ -22,7 +22,7 @@ export const routes: Routes = [
         component : AdmindashboardComponent,
     },
     {
-        path:'users',
+        path:'user',
         component: UserdashboardComponent
     }
     

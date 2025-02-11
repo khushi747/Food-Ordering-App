@@ -14,6 +14,7 @@ import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { CartService } from '../../../services/shared/cart.service';
 import { DialogService } from '../../../services/shared/dialog.service';
+import { UserService } from '../../../services/shared/user.service';
 
 interface CartItem {
   itemId: number;
@@ -74,7 +75,8 @@ export class NavbarComponent implements OnInit {
     private cartService: CartService,
     private dialogService: DialogService,
     private messageService: MessageService,
-    private http: HttpClient
+    private http: HttpClient,
+    private userService: UserService
   ) {}
 
   items: MenuItem[] | undefined;
@@ -85,6 +87,13 @@ export class NavbarComponent implements OnInit {
   itemMap: { [key: number]: string } = {};
 
   ngOnInit() {
+    this.userService.userId$.subscribe((id) => {
+      if (id) {
+        this.userId = id; // Assign user ID
+        console.log('User ID received in navbar:', this.userId);
+      }
+    });
+  
     this.cartService.getCartItems().subscribe((items) => {
       this.cartItems = items;
     });
