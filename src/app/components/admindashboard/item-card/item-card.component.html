@@ -1,0 +1,154 @@
+<p-toast [breakpoints]="{ '920px': { width: '100%', right: '0', left: '0' } }" />
+<p-card styleClass="item-card" [style]="{ width: '20rem', overflow: 'hidden' }">
+
+  <div class="image-container h-5">
+    <img [src]="product.image" [alt]="product.name">
+  </div>
+
+
+  <div class="card-content">
+    <h3 class="product-title">{{ product.name }}</h3>
+    <div class="details-grid">
+      <div class="detail-item">
+        <p class="label">Price</p>
+        <p class="value">{{ product.price }}</p>
+      </div>
+      <div class="detail-item">
+        <p class="label">Quantity</p>
+        <p class="value">{{ product.quantity }}</p>
+      </div>
+    </div>
+
+    <div class="action-buttons" style="display: flex; justify-content: space-between;">
+      <p-button 
+        label="Update" 
+        icon="pi pi-pencil" 
+        styleClass="p-button-outlined"
+        pRipple
+        (click)="openDialog(product)">
+      </p-button>
+      <p-button 
+        label="Delete" 
+        icon="pi pi-trash" 
+        styleClass="p-button-danger"
+        pRipple
+        (onClick)="handleDelete()">
+      </p-button>
+    </div>
+  </div>
+</p-card>
+
+<!-- Update part of the d- box -->
+<p-dialog 
+  header="Update Product Details" 
+  [(visible)]="displayDialog" 
+  [modal]="true" 
+  [style]="{ width: '400px' }">
+
+  <div class="p-fluid" style="margin-bottom: 1rem;">
+    <div class="p-field" style="padding: .5rem;">
+      <label for="name">Name</label>
+      <input id="name" type="text" pInputText [(ngModel)]="menuItem.name">
+    </div>
+
+    <div class="p-field" style="padding: .5rem;">
+      <label for="price">Price</label>
+      <input id="price" type="number" pInputText [(ngModel)]="menuItem.price">
+    </div>
+
+    <div class="p-field" style="padding: .5rem;">
+      <label for="quantity">Quantity</label>
+      <input id="quantity" type="number" pInputText [(ngModel)]="menuItem.quantity">
+    </div>
+
+    <div class="p-field" style="padding: .5rem;">
+      <label for="img">Image URL</label>
+      <input id="img" type="text" pInputText [(ngModel)]="menuItem.image">
+    </div>
+  </div>
+
+  <div class="flex justify-content-between mr-5 ml-5">
+    <button pButton label="Cancel" class="p-button-secondary" (click)="displayDialog = false"></button>
+    <button pButton label="Update" class="p-button-primary" (click)="updateProduct()"></button>
+  </div>
+
+</p-dialog>
+
+
+<!-- <p-toast></p-toast>
+
+<p-card styleClass="item-card" [style]="{ width: '25rem', overflow: 'hidden' }">
+  <div class="image-container h-5">
+    <img [src]="product.image" [alt]="product.name">
+  </div>
+
+  <div class="card-content">
+    <h3 class="product-title">{{ product.name }}</h3>
+
+    <div class="details-grid">
+      <div class="detail-item">
+        <p class="label">Price</p>
+        <p class="value">{{ product.price }}</p>
+      </div>
+      <div class="detail-item">
+        <p class="label">Quantity</p>
+        <p class="value">{{ product.quantity }}</p>
+      </div>
+    </div>
+
+    <div class="action-buttons" style="display: flex; justify-content: space-between;">
+      <button 
+        pButton 
+        label="Update" 
+        icon="pi pi-pencil" 
+        styleClass="p-button-outlined" 
+        pRipple
+        (click)="openDialog(product)">
+      </button>
+
+      <button 
+        pButton 
+        label="Delete" 
+        icon="pi pi-trash" 
+        styleClass="p-button-danger" 
+        pRipple
+        (click)="handleDelete()">
+      </button>
+    </div>
+  </div>
+</p-card>
+
+<p-dialog 
+  header="Update Product Details" 
+  [(visible)]="displayDialog" 
+  [modal]="true" 
+  [style]="{ width: '400px' }">
+
+  <div class="p-fluid" style="margin-bottom: 1rem;">
+    <div class="p-field" style="padding: .5rem;">
+      <label for="name">Name</label>
+      <input id="name" type="text" pInputText [(ngModel)]="menuItem.name">
+    </div>
+
+    <div class="p-field" style="padding: .5rem;">
+      <label for="price">Price</label>
+      <input id="price" type="number" pInputText [(ngModel)]="menuItem.price">
+    </div>
+
+    <div class="p-field" style="padding: .5rem;">
+      <label for="quantity">Quantity</label>
+      <input id="quantity" type="number" pInputText [(ngModel)]="menuItem.quantity">
+    </div>
+
+    <div class="p-field" style="padding: .5rem;">
+      <label for="img">Image URL</label>
+      <input id="img" type="text" pInputText [(ngModel)]="menuItem.image">
+    </div>
+  </div>
+
+  <div class="flex justify-content-between mr-5 ml-5">
+    <button pButton label="Cancel" class="p-button-secondary" (click)="displayDialog = false"></button>
+    <button pButton label="Update" class="p-button-primary" (click)="updateProduct()"></button>
+  </div>
+
+</p-dialog> -->

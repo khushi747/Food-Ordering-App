@@ -1,0 +1,135 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.order-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    border: 1px solid white;
+    
+}
+
+.order-details {
+    display: flex;
+    justify-content: space-between;
+    max-height: 8rem;
+    overflow-y: auto;
+    padding-right: 8px;
+    
+}
+
+.order-details::-webkit-scrollbar {
+    width: 6px;
+}
+
+.order-details::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+
+.order-items p, .order-quantity p {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.order-card:hover {
+    transform: scale(1.03);
+}
+
+.border-bottom-1 {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.btn-div {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+    border: 3px solid white !important;
+
+}
+
+/* Order status styles */
+.orderbtn-status-pending:hover {
+    background-color: #e44343c9 !important;
+    color: white !important;
+}
+
+.btn-completed {
+    background-color: #66a069c9 !important;
+    color: white !important;
+}
+
+.ordertop-status-inprep {
+    background-color: #ca8f21c9 !important;
+    color: white !important;
+    margin-bottom: 0.5rem;
+    position: sticky;
+    top: 0;
+}
+
+.ordertop-status-pending {
+    background-color: #e44343c9 !important;
+    color: white !important;
+    margin-bottom: 0.5rem;
+}
+
+.ordertop-status-completed {
+    background-color: #66a069c9 !important;
+    color: white !important;
+    margin-bottom: 0.5rem;
+}
+
+/* Button styling */
+.orderbtn-status-completed, .orderbtn-status-inprep, .orderbtn-status-pending {
+    font-weight: bold;
+    border-radius: 8px;
+    height: 2.5rem;
+    font-size: 1rem;
+    text-align: center;
+    display: inline-block;
+}
+
+.orderbtn-status-completed {
+    background-color: #66a069c9 !important;
+    color: white !important;
+    border: none !important;
+}
+
+.orderbtn-status-completed:hover {
+    background-color: #5b8b5f !important;
+}
+
+.orderbtn-status-inprep {
+    border: 2px solid #ca8f21c9 !important;
+    background-color: white;
+    color: #ca8f21c9 !important;
+}
+
+.orderbtn-status-inprep:hover {
+    background-color: #ca8f21c9 !important;
+    color: white !important;
+}
+
+.orderbtn-status-pending {
+    border: 2px solid #e44343c9 !important;
+    background-color: white !important;
+    color: #e44343c9 !important;
+}
+
+button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.orderbtn-status-completed:disabled:hover {
+    background-color: #66a069c9 !important;
+}

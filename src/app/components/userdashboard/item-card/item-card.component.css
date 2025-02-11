@@ -1,0 +1,74 @@
+:host {
+    display: block;
+    
+    ::ng-deep .item-card {
+      background: white;
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
+      border: none;
+      overflow: hidden;
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+  
+      .p-card-body {
+        padding: 0;
+      }
+    }
+  }
+
+  body{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+  .image-container {
+    border-radius: 5%;
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+  
+  .card-content {
+    padding: 1rem;
+  }
+  
+  .product-title {
+    font-size: 120%;
+    font-weight: 600;
+    color: #1f2937;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  
+  .detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    
+    .value {
+      font-size: 120%;
+      color: #111827;
+      font-weight: 600;
+    }
+  }
+  
+.p-card-body {
+  padding: 0;
+}
+
+ 
