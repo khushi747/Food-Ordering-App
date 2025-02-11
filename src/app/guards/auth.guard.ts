@@ -21,11 +21,12 @@ export class AuthGuard implements CanActivate {
 
     // Role-based protection
     const requiredRole = route.data['role'];
-    if (requiredRole) {
+    if (requiredRole && requiredRole !== userRole) {
       alert('Unauthorized Access');
       this.router.navigate(['/login']);
       return false;
     }
+
     return true;
   }
 }
