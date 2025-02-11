@@ -90,8 +90,7 @@ export class OrderCardComponent {
     }
   }
 
-  // updateOrder(orderId: number, newStatus: string) {this.rabbitMQService.sendOrderUpdate(orderId, newStatus); }
-    
+     
 }
 
 
