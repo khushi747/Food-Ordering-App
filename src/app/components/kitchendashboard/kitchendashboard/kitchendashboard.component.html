@@ -1,9 +1,9 @@
 <app-navbar></app-navbar>
-<div class=" flex flex-wrap align-items-center justify-content-center card gap-4 p-4">
+<div class="flex flex-wrap align-items-center justify-content-center card gap-4 p-4">
   <app-order-card  
-  *ngFor="let orderWithItem of orderWithItems"
+  *ngFor="let orderWithItem of reversedOrderWithItems"
   [orderWithItem]="orderWithItem" 
   [ngClass]="getStatus(orderWithItem.status)"
   ></app-order-card>
 </div>
-<p>dashboard works!</p>
+ 

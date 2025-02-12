@@ -7,103 +7,105 @@ import { forkJoin, of } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { HttpClientModule } from '@angular/common/http';
 import { OrderService } from '../../../services/order.service';
-import { Order, OrderItem, MenuItem, ParsedOrderItem } from '../../../interfaces/interface';
-
+import {
+  Order,
+  OrderItem,
+  MenuItem,
+  ParsedOrderItem,
+} from '../../../interfaces/interface';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [ NavbarComponent, OrderCardComponent,CommonModule],
+  imports: [NavbarComponent, OrderCardComponent, CommonModule],
   templateUrl: './kitchendashboard.component.html',
-  styleUrl: './kitchendashboard.component.css'
+  styleUrl: './kitchendashboard.component.css',
 })
-
 export class KitchendashboardComponent implements OnInit {
- 
-
   getStatus(status: string): string {
-
-
     if (status === 'completed') {
-
       return 'completed-class';
-
     } else if (status === 'pending') {
-
       return 'pending-class';
-
     } else {
-
       return 'default-class';
-
     }
-
   }
-  
+
   title(title: any) {
     throw new Error('Method not implemented.');
-  } 
+  }
   orderWithItems: any[] = [];
-    loading = true;
-    error = '';
-  
-    constructor(private orderService: OrderService) {}
-  
-    ngOnInit(): void {
-      this.loadOrders();
-    }
-  
-    loadOrders(): void {
-      this.orderService.getOrders().pipe(
-        switchMap(orders => {
+  loading = true;
+  error = '';
+
+  constructor(private orderService: OrderService) {}
+
+  ngOnInit(): void {
+    this.loadOrders();
+  }
+
+  loadOrders(): void {
+    this.orderService
+      .getOrders()
+      .pipe(
+        switchMap((orders) => {
           if (orders.length === 0) {
             return of([[], [], []]);
           }
-          
+
           const menuItems$ = this.orderService.getMenuItems();
-          const ordersWithItems$ = orders.map(order => 
+          const ordersWithItems$ = orders.map((order) =>
             this.orderService.getOrderItems(order.orderId).pipe(
-              map(orderItems => ({
+              map((orderItems) => ({
                 order,
-                orderItems
+                orderItems,
               }))
             )
           );
-  
-          return forkJoin([
-            of(orders),
-            menuItems$,
-            ...ordersWithItems$
-          ]);
+
+          return forkJoin([of(orders), menuItems$, ...ordersWithItems$]);
         })
-      ).subscribe({
+      )
+      .subscribe({
         next: (results) => {
-          const [orders, menuItems, ...ordersWithItemsArray] = results as [Order[], MenuItem[], ...any[]];
-          
-          this.orderWithItems = ordersWithItemsArray.map((orderWithItems: any) => {
-            const items = orderWithItems.orderItems.map((item: OrderItem) => {
-              const parsedDetails: ParsedOrderItem = JSON.parse(item.itemsDetails);
-              const menuItem = menuItems?.find((m: MenuItem) => m.itemId === parsedDetails.ItemId);
+          const [orders, menuItems, ...ordersWithItemsArray] = results as [
+            Order[],
+            MenuItem[],
+            ...any[]
+          ];
+
+          this.orderWithItems = ordersWithItemsArray.map(
+            (orderWithItems: any) => {
+              const items = orderWithItems.orderItems.map((item: OrderItem) => {
+                const parsedDetails: ParsedOrderItem = JSON.parse(
+                  item.itemsDetails
+                );
+                const menuItem = menuItems?.find(
+                  (m: MenuItem) => m.itemId === parsedDetails.ItemId
+                );
+                return {
+                  name: menuItem?.name || 'Unknown Item',
+                  quantity: parsedDetails.Quantity,
+                };
+              });
+
               return {
-                name: menuItem?.name || 'Unknown Item',
-                quantity: parsedDetails.Quantity
+                order: orderWithItems.order,
+                items,
               };
-            });
-  
-            return {
-              order: orderWithItems.order,
-              items
-            };
-          });
-          
+            }
+          );
+          this.reversedOrderWithItems = [...this.orderWithItems].reverse();
+
           this.loading = false;
         },
         error: (err) => {
           console.error('Error loading orders:', err);
           this.error = 'Failed to load orders';
           this.loading = false;
-        }
+        },
       });
-    }
   }
- 
+  reversedOrderWithItems = [...this.orderWithItems].reverse();
+}
