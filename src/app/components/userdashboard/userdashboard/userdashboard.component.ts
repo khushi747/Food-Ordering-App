@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ApiService } from '../../../services/api.service';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ItemCardComponent } from '../item-card/item-card.component';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-root',
   standalone : true,
@@ -13,13 +14,14 @@ import { ItemCardComponent } from '../item-card/item-card.component';
 })
 export class UserdashboardComponent implements OnInit{
 
-  constructor(private apiser:ApiService) {}
+  constructor(private apiser:ApiService, private titleService:Title) {}
 
   ngOnInit() {
     this.apiser.fetchProducts().subscribe({
       next: (data) => this.products = data,
       error: (error)=>console.error(error)
     })
+    this.titleService.setTitle("User Screen");
   }
 
   products:any[] =[];

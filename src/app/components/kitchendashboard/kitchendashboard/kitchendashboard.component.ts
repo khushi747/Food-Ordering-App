@@ -7,6 +7,8 @@ import { forkJoin, of } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { HttpClientModule } from '@angular/common/http';
 import { OrderService } from '../../../services/order.service';
+import { Title } from '@angular/platform-browser';
+
 import {
   Order,
   OrderItem,
@@ -39,10 +41,12 @@ export class KitchendashboardComponent implements OnInit {
   loading = true;
   error = '';
 
-  constructor(private orderService: OrderService) {}
+  constructor(private titleService : Title, private orderService: OrderService) {}
 
   ngOnInit(): void {
     this.loadOrders();
+        this.titleService.setTitle("Chef Screen");  
+
   }
 
   loadOrders(): void {

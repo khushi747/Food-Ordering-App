@@ -7,6 +7,7 @@ import { ApiService } from '../../../services/api.service';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ItemCardComponent } from '../item-card/item-card.component';
 import { AddComponent } from '../add/add.component';
+import { Title } from '@angular/platform-browser';
  
 
 @Component({
@@ -22,13 +23,15 @@ export class AdmindashboardComponent implements OnInit {
 
   http = inject(HttpClient);
 
-  constructor(private apiser:ApiService) {}
+  constructor(private apiser:ApiService, private titleService : Title) {}
 
   ngOnInit() {
     this.apiser.fetchProducts().subscribe({
       next: (data) => this.products = data,
       error: (error)=>console.error(error)
     })
+    this.titleService.setTitle("Admin Screen");  
+
   }
 
   // data => {
