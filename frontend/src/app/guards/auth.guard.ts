@@ -30,3 +30,7 @@ export class AuthGuard implements CanActivate {
     return true;
   }
 }
+
+export function authGuard(arg0: import("@angular/router").RouterStateSnapshot | ActivatedRouteSnapshot): any {
+  throw new Error('Function not implemented.');
+}
