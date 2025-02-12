@@ -13,7 +13,7 @@ import { AddComponent } from '../add/add.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, NavbarComponent, ItemCardComponent, AddComponent],
+  imports: [CommonModule, NavbarComponent, ItemCardComponent, AddComponent],
   templateUrl: './admindashboard.component.html',
   styleUrls: ['./admindashboard.component.css']
 })

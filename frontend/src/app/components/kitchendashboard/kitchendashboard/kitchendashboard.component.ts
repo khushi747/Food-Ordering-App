@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { OrderCardComponent } from '../order-card/order-card.component';
 import { CommonModule } from '@angular/common';
@@ -18,7 +18,7 @@ import { Order, OrderItem, MenuItem, ParsedOrderItem } from '../../../interfaces
   styleUrl: './kitchendashboard.component.css'
 })
 
-export class KitchendashboardComponent implements OnInit {
+export class KitchendashboardComponent{
  
 
   getStatus(status: string): string {

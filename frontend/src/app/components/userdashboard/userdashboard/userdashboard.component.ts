@@ -7,19 +7,30 @@ import { CommonModule } from '@angular/common';
 import { ApiService } from '../../../services/api.service';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ItemCardComponent } from '../item-card/item-card.component';
+// import { RabbitmqService } from '../../../services/rabbitmq.service';
+
 
 @Component({
   selector: 'app-root',
   standalone : true,
-  imports: [RouterOutlet,NavbarComponent, ItemCardComponent,CommonModule],
+  imports: [NavbarComponent, ItemCardComponent,CommonModule],
   templateUrl: './userdashboard.component.html',
   styleUrl: './userdashboard.component.css'
 })
 export class UserdashboardComponent implements OnInit{
 
-  constructor(private apiser:ApiService) {}
+  constructor(
+              private apiser:ApiService,
+              // private rabbitmqService: RabbitmqService
+            ) {}
 
-  ngOnInit() {
+  ngOnInit():void {
+    
+    // console.log('Listening for order status updates...');
+    // this.rabbitmqService.subscribeToOrderUpdates((message) => {
+    //   console.log('Order status update received:', message);
+    // });
+
     this.apiser.fetchProducts().subscribe({
       next: (data) => this.products = data,
       error: (error)=>console.error(error)

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { OrderService } from '../../../services/order.service';
+// import { RabbitmqService } from '../../../services/rabbitmq.service';
 // import { RabbitMQService } from '../../service/rabbitmq.service';
 
 interface Order {
@@ -29,7 +30,12 @@ export class OrderCardComponent {
   // Receiving order details from parent component i.e- dashboard.component.html
   @Input() orderWithItem!: OrderWithItems;
 
-  constructor(private http: HttpClient, private orderService: OrderService) {}
+  constructor(private http: HttpClient, private orderService: OrderService,
+    // private rabbitmqService: RabbitmqService
+  ) {}
+  // ngOnInit(): void {
+  //   console.log('Listening for order status updates...');
+  // }
 
   
   getStatusClass(): string {
