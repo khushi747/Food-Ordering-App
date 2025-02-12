@@ -1,27 +1,37 @@
-<p-card    [style]="{ width: '19rem', height: '19rem' ,overflow: 'hidden' }" class="shadow-2 order-card">
-    <ng-template #header>
-        <div [ngClass]="getStatusClassTop()" class="border-bottom-1 p-3">
-            <p class="text-lg font-bold m-0">Order Id {{ orderWithItem.order.orderId }}</p>
-            <p class="text-sm m-0">{{ orderWithItem.order.userName }}</p>
-        </div>
-    </ng-template>
-    
-    <ng-template #content>
-        <div class="order-details flex justify-content-between px-3 mt-1">
-            <div class="order-items">
-                <p *ngFor="let item of orderWithItem.items">{{ item.name }}</p>
-            </div>
-            <div class="order-quantity">
-                <p *ngFor="let item of orderWithItem.items">x {{ item.quantity }}</p>
-            </div>
-        </div>
-    </ng-template>
-    
-    <ng-template #footer >
-        <div class="btn-div flex justify-content-center w-full px-3  ">
-        <button class="w-full" [ngClass]="getStatusClass()" (click)="updateStatus()">
-          {{ orderWithItem.order.orderStatuses[0].status || 'No Status' }}
-        </button>
-        </div>
-    </ng-template>
-</p-card> 
+<p-card
+  [style]="{ width: '19rem', height: '19rem' ,overflow: 'hidden' }"
+  class="shadow-2 order-card"
+>
+  <ng-template #header>
+    <div [ngClass]="getStatusClassTop()" class="border-bottom-1 p-3">
+      <p class="text-lg font-bold m-0">
+        Order Id {{ orderWithItem.order.orderId }}
+      </p>
+      <p class="text-sm m-0">{{ orderWithItem.order.userName }}</p>
+    </div>
+  </ng-template>
+
+  <ng-template #content>
+    <div class="order-details flex justify-content-between px-3 mt-1">
+      <div class="order-items">
+        <p *ngFor="let item of orderWithItem.items">{{ item.name }}</p>
+      </div>
+      <div class="order-quantity">
+        <p *ngFor="let item of orderWithItem.items">x {{ item.quantity }}</p>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #footer>
+    <div class="btn-div flex justify-content-center w-full px-3">
+      <button
+        class="w-full"
+        [ngClass]="getStatusClass()"
+        (click)="updateStatus()"
+      >
+        {{ orderWithItem.order.orderStatuses[0].status || "No Status" }}
+      </button>
+      <!-- <button (click)="updateOrder(34, 'In Progress')">Update Order to Preparing</button> -->
+    </div>
+  </ng-template>
+</p-card>

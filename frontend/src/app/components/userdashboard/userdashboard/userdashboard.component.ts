@@ -1,7 +1,4 @@
-
-
 import { Component, inject, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../../services/api.service';
@@ -9,11 +6,12 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { ItemCardComponent } from '../item-card/item-card.component';
 // import { RabbitmqService } from '../../../services/rabbitmq.service';
 
-
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-root',
   standalone : true,
   imports: [NavbarComponent, ItemCardComponent,CommonModule],
+
   templateUrl: './userdashboard.component.html',
   styleUrl: './userdashboard.component.css'
 })
@@ -22,7 +20,7 @@ export class UserdashboardComponent implements OnInit{
   constructor(
               private apiser:ApiService,
               // private rabbitmqService: RabbitmqService
-            ) {}
+             private titleService:Title) {}
 
   ngOnInit():void {
     
@@ -35,13 +33,13 @@ export class UserdashboardComponent implements OnInit{
       next: (data) => this.products = data,
       error: (error)=>console.error(error)
     })
+    this.titleService.setTitle("User Screen");
   }
 
   products:any[] =[];
 
   http = inject(HttpClient);
   title = 'Users';
-
 
 
   handleDelete(product: any) {
