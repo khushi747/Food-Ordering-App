@@ -1,33 +1,37 @@
-.navcomponent{
-    padding: 1vh 1vw;
+.navcomponent {
+  padding: 1vh 1vw;
 }
 
-
-.logo img{
-    width: 3rem;  
-    height: 3rem;
-    border-radius: 50%;   
+.logo img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
 }
-.navcomponent .logo{
-    display: flex;
-    align-items: center;
+.navcomponent .logo {
+  display: flex;
+  align-items: center;
 }
 
 .navcomponent .profile {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
-.btn{
-    height:2.5rem;
+.btn {
+  height: 2.5rem;
 }
-.btn:hover{
-    transform: scale(1.03);
-    background-color: grey;
+.btn:hover {
+  transform: scale(1.03);
+  background-color: grey;
 }
-.profile-icon{
-    width: 3rem;  
-    height: 3rem;
-    border-radius: 50%;   
+.profile-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+.huh {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /* 
 .bg-r{
@@ -39,4 +43,3 @@
 .bg-g{
     background-color: #66a069c9;
 } */
-

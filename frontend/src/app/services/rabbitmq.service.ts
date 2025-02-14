@@ -1,127 +1,128 @@
-// import { Injectable } from '@angular/core';
-// import { Client, IMessage } from '@stomp/stompjs';
-
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class RabbitmqService {
-//   private stompClient: Client;
-//   private isConnected: boolean = false;
-//   private subscriptionCallback: ((message: string) => void) | null = null;
-
-//   constructor() {
-//     this.stompClient = new Client({
-//       brokerURL: 'ws://localhost:15674/ws', // Web STOMP URL
-//       reconnectDelay: 5000, // Auto-reconnect
-//     });
-
-//     this.stompClient.onConnect = () => {
-//       console.log('✅ Connected to RabbitMQ via Web STOMP');
-//       this.isConnected = true;
-
-//       // Subscribe immediately if a callback was set before connection
-//       if (this.subscriptionCallback) {
-//         this.subscribeToOrderUpdates(this.subscriptionCallback);
-//       }
-//     };
-
-//     this.stompClient.onStompError = (frame) => {
-//       console.error('❌ STOMP Broker error:', frame.headers['message']);
-//     };
-
-//     this.stompClient.activate();
-//   }
-
-//   public subscribeToOrderUpdates(callback: (message: string) => void) {
-//     this.subscriptionCallback = callback; // Store callback for later use
-
-//     if (!this.isConnected) {
-//       console.warn('⚠️ STOMP client not connected yet. Will subscribe after connection.');
-//       return; // Wait until the connection is established
-//     }
-
-//     this.stompClient.subscribe('/queue/order-status-updates', (message: IMessage) => {
-//       console.log('📩 Received order update:', message.body);
-//       this.subscriptionCallback?.(message.body);
-//     });
-//   }
-// }
-
-import { Injectable } from '@angular/core';
-import { Client, Message } from '@stomp/stompjs';
-
-
+import { Injectable, inject } from '@angular/core';
+import { Client } from '@stomp/stompjs';
+import { UserService } from './shared/user.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class RabbitmqService {
+export class RabbitMQService {
   private stompClient!: Client;
-  private isConnected = false;
-  private subscriptionCallback: ((message: string) => void) | null = null;
+  private readonly rabbitMqUrl = 'ws://127.0.0.1:15674/ws';
+
+  private orderStatusSubject = new BehaviorSubject<{
+    orderId: number;
+    status: string;
+  } | null>(null);
+  orderStatus$ = this.orderStatusSubject.asObservable();
+
+  private orderUpdatesSubject = new BehaviorSubject<any | null>(null);
+  orderUpdates$ = this.orderUpdatesSubject.asObservable();
+
+  userService = inject(UserService);
+  userId: number = 0;
+  // role : string ='';
 
   constructor() {
-    this.initializeWebSocketConnection();
+    this.userService.userId$.subscribe((id) => {
+      if (id) {
+        this.userId = id;
+        this.connect();
+      }
+    });
+
+    // this.userService.role$.subscribe((role)=>{
+    //   if(role==="chef"){
+    //     this.role = role;
+    //     this.connect
+    //   }
+    // })
   }
 
-  private initializeWebSocketConnection() {
-    console.log('🚀 Initializing RabbitMQ STOMP connection...');
-    
+  private connect() {
     this.stompClient = new Client({
-      brokerURL: 'ws://localhost:15674/ws', // Web STOMP connection URL
-      connectHeaders: {
-        login: 'guest',
-        passcode: 'guest',
-      },
-      debug: (msg: string) => console.log(`📡 STOMP: ${msg}`),
-      reconnectDelay: 5000, // Auto-reconnect after 5 seconds
-      heartbeatIncoming: 4000,
-      heartbeatOutgoing: 4000,
+      brokerURL: this.rabbitMqUrl,
+      connectHeaders: { login: 'guest', passcode: 'guest' },
+      debug: (str) => console.log(str),
+      reconnectDelay: 1000,
     });
 
     this.stompClient.onConnect = () => {
-      console.log('✅ Connected to RabbitMQ via Web STOMP');
-      this.isConnected = true;
-      if (this.subscriptionCallback) {
-        this.subscribeToOrderUpdates(this.subscriptionCallback);
-      }
+      console.log('Connected to RabbitMQ');
+
+      // Subscribe based on user role
+      this.userService.role$.subscribe((role) => {
+        if (role === 'user') {
+          this.subscribeToStatusQueue(); // Users get order status updates
+        } else if (role === 'chef') {
+          this.subscribeToOrderQueue(); // Chefs get new order notifications
+        }
+      });
     };
 
-    this.stompClient.onStompError = (error) => {
-      console.error('❌ STOMP Error:', error);
-      this.isConnected = false;
-      this.retrySubscription();
+    this.stompClient.onStompError = (frame) => {
+      console.error('STOMP Error:', frame);
     };
 
     this.stompClient.activate();
   }
 
-  subscribeToOrderUpdates(callback: (message: string) => void) {
-    if (!this.isConnected) {
-      console.warn('⚠️ STOMP client not connected yet. Retrying subscription...');
-      this.subscriptionCallback = callback;
-      this.retrySubscription();
+  private subscribeToStatusQueue() {
+    const queueName = `/queue/order-status-updates-user-${this.userId}`;
+
+    if (!this.stompClient.connected) {
+      console.error('STOMP Client is not connected');
       return;
     }
 
-    console.log('📬 Subscribing to order status updates...');
-    this.subscriptionCallback = callback;
+    console.log('Subscribing to:', queueName);
 
-    this.stompClient.subscribe('/queue/order-status-updates', (message: Message) => {
-      console.log('📩 Received message:', message.body);
-      callback(message.body);
+    this.stompClient.subscribe(queueName, (message) => {
+      const receivedMessage = JSON.parse(message.body);
+      const updatedStatus = receivedMessage.message.status;
+      const orderId = receivedMessage.message.orderId;
+
+      console.log(
+        `Received status update: Order ${orderId} - ${updatedStatus}`
+      );
+      this.orderStatusSubject.next({ orderId, status: updatedStatus });
     });
   }
 
-  private retrySubscription() {
-    setTimeout(() => {
-      if (this.isConnected && this.subscriptionCallback) {
-        console.log('🔄 Retrying subscription...');
-        this.subscribeToOrderUpdates(this.subscriptionCallback);
-      } else {
-        console.warn('⏳ Still waiting for connection...');
-        this.retrySubscription();
-      }
-    }, 3000); // Retry every 3 seconds
+  private subscribeToOrderQueue() {
+    const queueName = `/queue/order-create-user`;
+
+    if (!this.stompClient.connected) {
+      console.error('STOMP Client is not connected');
+      return;
+    }
+
+    console.log('Subscribing to:', queueName);
+
+    this.stompClient.subscribe(queueName, (message) => {
+      const receivedMessage = JSON.parse(message.body);
+      console.log('Received new order:', receivedMessage);
+
+      const orderData = receivedMessage.message;
+
+      const formattedOrder = {
+        orderId: orderData.orderId,
+        userId: orderData.userId,
+        orderDate: orderData.orderDate,
+        totalPrice: orderData.totalPrice,
+        status: 'Pending', // Default to 'Pending'
+        items: orderData.orderdetails.map((item: any) => {
+        const parsedDetails = JSON.parse(item.itemsDetails);
+          return {
+            itemId: parsedDetails.ItemId,
+            quantity: parsedDetails.Quantity,
+            totalPrice: item.totalPrice,
+          };
+        }),
+      };
+
+      // Emit the formatted order to update the UI
+      this.orderUpdatesSubject.next(formattedOrder);
+    });
   }
 }

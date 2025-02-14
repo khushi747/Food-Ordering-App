@@ -62,8 +62,10 @@ export class LoginpageComponent implements OnInit {
         console.log('details are', decoded);
         console.log('Role is', decoded.role);
         if (decoded && decoded.user_Id) {
-          const userId = parseInt(decoded.user_Id, 10); // Now it recognizes 'user_Id'
+          const userId = parseInt(decoded.user_Id, 10);
+          const role = decoded.role; // Now it recognizes 'user_Id'
           this.userService.setUserId(userId);
+          this.userService.setRole(role);
         }
 
         const role = decoded.role;

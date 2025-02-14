@@ -1,9 +1,8 @@
 <app-navbar></app-navbar>
 <div class="flex flex-wrap align-items-center justify-content-center card gap-4 p-4">
   <app-order-card  
-  *ngFor="let orderWithItem of reversedOrderWithItems"
-  [orderWithItem]="orderWithItem" 
-  [ngClass]="getStatus(orderWithItem.status)"
+    *ngFor="let orderWithItem of reversedOrderWithItems"
+    [orderWithItem]="orderWithItem" 
+    [ngClass]="getStatus(orderWithItem.order.status)" 
   ></app-order-card>
 </div>
- 

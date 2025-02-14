@@ -1,20 +1,19 @@
-import { ActivatedRouteSnapshot, CanActivate, GuardResult, MaybeAsync, RouterStateSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 
-@Injectable ({
-  providedIn: 'root'
+@Injectable({
+  providedIn: 'root',
 })
+export class LoginGuard implements CanActivate {
+  constructor(private loginService: LoginService, private router: Router) {}
 
-export class loginGuard implements  CanActivate{
-  constructor(private loginService: LoginService, private router: Router) { }
   canActivate(): boolean {
     const role = this.loginService.getUserRole();
-    this.loginService.getUserRole();
-    if(role){
+
+    if (role) {
       return true;
-    }else{
+    } else {
       this.router.navigate(['/login']);
       return false;
     }

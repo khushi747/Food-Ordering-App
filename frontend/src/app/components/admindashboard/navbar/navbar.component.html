@@ -16,6 +16,11 @@
           <div class="flex items-center gap-2">
               <input type="text" pInputText placeholder="Search" class="w-36" />
               <p-avatar class="profile-icon" image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
+                <i
+          class="logoutbtn pi pi-sign-out"
+          style="font-size: 2rem; cursor: pointer"
+          (click)="onLogout()"
+        ></i>
           </div>
       </ng-template>
   </p-menubar>

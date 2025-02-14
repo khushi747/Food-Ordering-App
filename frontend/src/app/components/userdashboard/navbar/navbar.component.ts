@@ -8,13 +8,16 @@ import { CommonModule } from '@angular/common';
 import { Ripple } from 'primeng/ripple';
 import { DrawerModule } from 'primeng/drawer';
 import { ButtonModule } from 'primeng/button';
- import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { CartService } from '../../../services/shared/cart.service';
 import { DialogService } from '../../../services/shared/dialog.service';
 import { UserService } from '../../../services/shared/user.service';
+import { RabbitMQService } from '../../../services/rabbitmq.service';
+import { LoginService } from '../../../services/login.service';
+
 
 interface CartItem {
   itemId: number;
@@ -59,12 +62,21 @@ interface Item {
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [Menubar, BadgeModule, AvatarModule, InputTextModule, Ripple, CommonModule, DrawerModule, ButtonModule, ToastModule],
+  imports: [
+    Menubar,
+    BadgeModule,
+    AvatarModule,
+    InputTextModule,
+    Ripple,
+    CommonModule,
+    DrawerModule,
+    ButtonModule,
+    ToastModule,
+  ],
   providers: [MessageService],
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'] 
+  styleUrls: ['./navbar.component.css'],
 })
-
 export class NavbarComponent implements OnInit {
   cartItems: CartItem[] = [];
   visible2 = false;
@@ -76,24 +88,26 @@ export class NavbarComponent implements OnInit {
     private dialogService: DialogService,
     private messageService: MessageService,
     private http: HttpClient,
-    private userService: UserService
+    private userService: UserService,
+    private rabbitMQService: RabbitMQService,
+    private loginService : LoginService,
   ) {}
 
   items: MenuItem[] | undefined;
   totalPrice: number = 0;
 
   orders: Order[] = [];
-  userId = 39;
+  userId = 0;
   itemMap: { [key: number]: string } = {};
 
   ngOnInit() {
     this.userService.userId$.subscribe((id) => {
       if (id) {
-        this.userId = id; // Assign user ID
+        this.userId = id;
         console.log('User ID received in navbar:', this.userId);
       }
     });
-  
+
     this.cartService.getCartItems().subscribe((items) => {
       this.cartItems = items;
     });
@@ -105,8 +119,25 @@ export class NavbarComponent implements OnInit {
     });
 
     this.dialogService.cartItems$.subscribe((cartItems) => {
-    this.totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+      this.totalPrice = cartItems.reduce(
+        (acc, item) => acc + item.price * item.quantity,
+        0
+      );
     });
+
+    this.rabbitMQService.orderStatus$.subscribe((update) => {
+      if (update) {
+        this.updateOrderStatus(update.orderId, update.status);
+      }
+    });
+  }
+
+  updateOrderStatus(orderId: number, newStatus: string) {
+    const order = this.orders.find((o) => o.orderId === orderId);
+    if (order) {
+      console.log(`Updating order ${orderId} to status: ${newStatus}`);
+      order.orderstatuses[order.orderstatuses.length - 1].status = newStatus;
+    }
   }
 
   openDialog() {
@@ -122,12 +153,19 @@ export class NavbarComponent implements OnInit {
   }
 
   getTotalPrice(): number {
-    return this.cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    return this.cartItems.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
   }
 
   placeOrder() {
     if (this.cartItems.length === 0) {
-      this.messageService.add({ severity: 'warn', summary: 'Warning', detail: 'Cart is empty!' });
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Warning',
+        detail: 'Cart is empty!',
+      });
       return;
     }
 
@@ -142,14 +180,22 @@ export class NavbarComponent implements OnInit {
     this.http.post(this.apiUrl, orderdetails).subscribe({
       next: (response) => {
         console.log('Order placed successfully:', response);
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Order placed successfully!' });
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Order placed successfully!',
+        });
         this.cartService.clearCart();
-        this.visible2=false;
+        this.visible2 = false;
       },
       error: (error) => {
         console.error('Error placing order:', error);
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to place order. Try again!' });
-        this.visible2=false;
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Failed to place order. Try again!',
+        });
+        this.visible2 = false;
       },
     });
   }
@@ -165,32 +211,34 @@ export class NavbarComponent implements OnInit {
   }
 
   fetchOrders() {
-    this.http.get<Order[]>(`http://10.13.106.18/api/User/orders/${this.userId}`).subscribe({
-      next: (response) => {
-        this.orders = response.map(order => ({
-          ...order,
-          orderdetails: order.orderdetails.map(detail => {
-            try {
-              const extractediteams = JSON.parse(detail.itemsDetails); // Parse JSON string
-              return {
-                ...detail,
-                itemId: extractediteams.ItemId, // Extract ItemId
-                quantity: extractediteams.Quantity, // Extract Quantity
-                itemsDetails: this.itemMap[extractediteams.ItemId] || 'Unknown Item' // Map ItemId to name
-              };
-            } catch (error) {
-              console.error('Error parsing itemsDetails:', error);
-              return { ...detail, itemsDetails: 'Invalid Data' };
-            }
-          })
-        }));
-      },
-      error: (error) => {
-        console.error('Error fetching orders:', error);
-      }
-    });
+    this.http
+      .get<Order[]>(`http://10.13.106.18/api/User/orders/${this.userId}`)
+      .subscribe({
+        next: (response) => {
+          this.orders = response.map((order) => ({
+            ...order,
+            orderdetails: order.orderdetails.map((detail) => {
+              try {
+                const extractediteams = JSON.parse(detail.itemsDetails); // Parse JSON string
+                return {
+                  ...detail,
+                  itemId: extractediteams.ItemId, // Extract ItemId
+                  quantity: extractediteams.Quantity, // Extract Quantity
+                  itemsDetails:
+                    this.itemMap[extractediteams.ItemId] || 'Unknown Item', // Map ItemId to name
+                };
+              } catch (error) {
+                console.error('Error parsing itemsDetails:', error);
+                return { ...detail, itemsDetails: 'Invalid Data' };
+              }
+            }),
+          }));
+        },
+        error: (error) => {
+          console.error('Error fetching orders:', error);
+        },
+      });
   }
-  
 
   fetchItemDetails() {
     this.http.get<Item[]>('http://10.13.106.18/api/Admin/menu').subscribe({
@@ -211,12 +259,15 @@ export class NavbarComponent implements OnInit {
       this.orders.forEach((order) => {
         order.orderdetails.forEach((detail) => {
           if (detail.itemId in this.itemMap) {
-            detail.itemsDetails = this.itemMap[detail.itemId]; 
+            detail.itemsDetails = this.itemMap[detail.itemId];
           } else {
-            detail.itemsDetails = 'Unknown Item'; 
+            detail.itemsDetails = 'Unknown Item';
           }
         });
       });
     }
+  }
+  onLogout() {
+    this.loginService.onLogout();
   }
 }

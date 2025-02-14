@@ -1,0 +1,41 @@
+.btn {
+  width: 17.2rem;
+  height: 3rem;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-weight: 600;
+  color: white;
+  background-color: #66a069c9; /* Default Blue */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btndiv {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.btn:hover {
+  background-color: #ca8f21c9;
+  transform: scale(1.05);
+}
+
+.btn:active {
+  background-color: #1e40af; /* Even Darker Blue */
+  transform: scale(0.98);
+}
+
+.btn.red {
+  background-color: #e44343c9;
+}
+
+.btn.red:hover {
+  background-color: #e44343c9;
+}
+
+.btn.red:active {
+  background-color: #e44343c9;
+}

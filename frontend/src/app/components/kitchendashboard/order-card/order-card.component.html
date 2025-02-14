@@ -7,7 +7,7 @@
       <p class="text-lg font-bold m-0">
         Order Id {{ orderWithItem.order.orderId }}
       </p>
-      <p class="text-sm m-0">{{ orderWithItem.order.userName }}</p>
+      <!-- <p class="text-sm m-0">{{ orderWithItem.order.userName }}</p> -->
     </div>
   </ng-template>
 
@@ -27,9 +27,10 @@
       <button
         class="w-full"
         [ngClass]="getStatusClass()"
+
         (click)="updateStatus()"
       >
-        {{ orderWithItem.order.orderStatuses[0].status || "No Status" }}
+        {{ orderWithItem?.order?.orderStatuses?.[0]?.status ?? "Pending" }}
       </button>
       <!-- <button (click)="updateOrder(34, 'In Progress')">Update Order to Preparing</button> -->
     </div>
