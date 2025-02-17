@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class RabbitMQService {
   private stompClient!: Client;
-  private readonly rabbitMqUrl = 'ws://127.0.0.1:15674/ws';
+  private readonly rabbitMqUrl = 'ws://10.13.106.18:15674/ws';
 
   private orderStatusSubject = new BehaviorSubject<{
     orderId: number;
@@ -112,7 +112,7 @@ export class RabbitMQService {
         totalPrice: orderData.totalPrice,
         status: 'Pending', // Default to 'Pending'
         items: orderData.orderdetails.map((item: any) => {
-        const parsedDetails = JSON.parse(item.itemsDetails);
+          const parsedDetails = JSON.parse(item.itemsDetails);
           return {
             itemId: parsedDetails.ItemId,
             quantity: parsedDetails.Quantity,
