@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using MassTransit.Transports;
 using ordermanagement.Events;
 using Microsoft.DotNet.Scaffolding.Shared.Messaging;
+using ordermanagement.Producer;
 
 
 namespace ordermanagement.Controllers

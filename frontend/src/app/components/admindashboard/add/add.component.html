@@ -1,32 +1,61 @@
-<i class="pi pi-plus-circle" style="font-size: 3.5rem; cursor: pointer; color: rgb(94, 109, 109);border-radius: 3rem;background-color: black; color: white;" 
-    (click)="openDialog()"></i>
+<i
+  class="pi pi-plus-circle"
+  style="
+    font-size: 3.5rem;
+    cursor: pointer;
+    color: rgb(94, 109, 109);
+    border-radius: 3rem;
+    background-color: black;
+    color: white;
+  "
+  (click)="openDialog()"
+></i>
 
-<p-dialog header="Add New Menu Item" [(visible)]="displayDialog" [modal]="true" [style]="{width: '400px'}" >
-    <div class="p-fluid" style="margin-bottom: 1rem;">
-     <div class="p-field" style=" padding: .5rem;">
-       <label for="name" style="margin-right: .3rem">Name</label>
-       <input id="name" type="text" pInputText [(ngModel)]="menuItem.name">
-     </div>
-    
-     <div class="p-field" style=" padding: .5rem;">
-       <label for="price"style="margin-right: .3rem">Price</label>
-       <input id="price" type="number" pInputText [(ngModel)]="menuItem.price">
-     </div>
-    
-     <div class="p-field" style=" padding: .5rem;">
-       <label for="quantity"style="margin-right: .3rem">Quantity</label>
-       <input id="quantity" type="number" pInputText [(ngModel)]="menuItem.quantity">
-     </div>
-    
-     <div class="p-field" style=" padding: .5rem;">
-       <label for="img"style="margin-right: .3rem">Image URL</label>
-       <input id="img" type="text" pInputText [(ngModel)]="menuItem.image">
-     </div>
+<p-dialog
+  header="Add New Menu Item"
+  [(visible)]="displayDialog"
+  [modal]="true"
+  [style]="{ width: '400px' }"
+>
+  <div class="p-fluid" style="margin-bottom: 1rem">
+    <div class="p-field" style="padding: 0.5rem">
+      <label for="name" style="margin-right: 0.3rem">Name</label>
+      <input id="name" type="text" pInputText [(ngModel)]="menuItem.name" />
     </div>
-    
-    <div class="flex justify-content-between mr-5 ml-5 ">
-      <button pButton label="Cancel" class="p-button-secondary" (click)="displayDialog = false" ></button>
-      <button pButton label="Save" class="p-button-primary" (click)="createMenu()"></button>
+
+    <div class="p-field" style="padding: 0.5rem">
+      <label for="price" style="margin-right: 0.3rem">Price</label>
+      <input id="price" type="number" pInputText [(ngModel)]="menuItem.price" />
     </div>
-    
+
+    <div class="p-field" style="padding: 0.5rem">
+      <label for="quantity" style="margin-right: 0.3rem">Quantity</label>
+      <input
+        id="quantity"
+        type="number"
+        pInputText
+        [(ngModel)]="menuItem.quantity"
+      />
+    </div>
+
+    <div class="p-field" style="padding: 0.5rem">
+      <label for="img" style="margin-right: 0.3rem">Image URL</label>
+      <input id="img" type="text" pInputText [(ngModel)]="menuItem.image" />
+    </div>
+  </div>
+
+  <div class="flex justify-content-between mr-5 ml-5">
+    <button
+      pButton
+      label="Cancel"
+      class="p-button-secondary"
+      (click)="displayDialog = false"
+    ></button>
+    <button
+      pButton
+      label="Save"
+      class="p-button-primary"
+      (click)="createMenu()"
+    ></button>
+  </div>
 </p-dialog>
