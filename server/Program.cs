@@ -10,23 +10,24 @@ using ordermanagement.Events;
 using ordermanagement.Producer;
 
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<ChefService>();
+builder.Services.AddScoped<TokenService>();
 builder.Services.AddControllers();
 
 builder.Services.AddMassTransit(x =>
 {
-    x.UsingRabbitMq((context, cfg) =>
+ x.UsingRabbitMq((context, cfg) =>
     {
-        cfg.Host("10.13.106.18", h =>
+        cfg.Host("puffin.rmq2.cloudamqp.com", "ysaakyrp", h =>
         {
-            h.Username("guest");
-            h.Password("guest");
+            h.Username("ysaakyrp");
+            h.Password("gs-Uyp1qiqJY4F5DtEe_vKP1yCG2Sz-C");
         });
-        // cfg.Message<OrderStatusUpdatedEvent>(x => x.SetEntityName("order-status-exchange"));
     });
 });
 
