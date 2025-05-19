@@ -1,24 +1,20 @@
-# --- Build Stage ---
+# Use the official .NET SDK image to build the app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /app
+WORKDIR /src
 
-# Copy the project file and restore dependencies
-COPY *.csproj ./
-RUN dotnet restore
+# Copy the .csproj file and restore dependencies
+COPY ordermanagement.csproj ./
+RUN dotnet restore ordermanagement.csproj
 
-# Copy the rest of the code and publish
+# Copy the rest of the source code
 COPY . ./
-RUN dotnet publish -c Release -o /app/out
+RUN dotnet publish ordermanagement.csproj -c Release -o /app/publish
 
-# --- Runtime Stage ---
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+# Use the runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
+COPY --from=build /app/publish .
 
-# Copy the published output from the build stage
-COPY --from=build /app/out ./
-
-# Expose the port your app runs on (adjust if different)
+# Expose port
 EXPOSE 8080
-
-# Run the application
 ENTRYPOINT ["dotnet", "ordermanagement.dll"]
